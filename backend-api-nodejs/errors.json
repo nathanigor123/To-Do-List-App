@@ -1,0 +1,19 @@
+{
+    "UNAUTHENTICATED": "You need authentication to access this resource.",
+    "UNAUTHORIZED": "You don't have enough privileges to access this resource.",
+    "RESOURCE_NOT_FOUND": "The specified resource does not exist.",
+    "SERVER_ERROR": "Oops something went wrong. Please try again later.",
+    "UNPROCESSABLE_ENTITY": "The data provided in the request are invalid.",
+    "INVALID_TOKEN": "The access token is invalid.",
+    "UNKNOWN_ERROR": "Unexpected error please try again later.",
+    "GEOCODE_FAILED": "We could not geocode the address.",
+    "INVALID_CLIENT": "The client is invalid.",
+    "STATUS_CODES": {
+      "404": "RESOURCE_NOT_FOUND",
+      "500": "SERVER_ERROR",
+      "401": "UNAUTHENTICATED",
+      "403": "UNAUTHORIZED",
+      "422": "UNPROCESSABLE_ENTITY"
+    }
+  
+  }
