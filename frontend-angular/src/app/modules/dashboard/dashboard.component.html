@@ -1,0 +1,92 @@
+<p-confirmDialog [baseZIndex]="10000"></p-confirmDialog>
+<p-toast [style]="{ marginTop: '80px' }" position="top-right">
+</p-toast>
+
+<p-dialog [style]="{ 'width': '500px' }" [minY]="70" [maximizable]="true" [(visible)]="displayDialogAddingTask"
+  appendTo="body" [modal]="true" [draggable]="false" position="top" header="Ajouter une tâche">
+  <app-new-edit-task *ngIf="displayDialogAddingTask" (savedTask)="hideCreatedOrUpdatedTaskDialog($event)"
+    (errorSavingTask)="hideDialogErrorSavingOrUpdatingTask($event)">
+  </app-new-edit-task>
+
+</p-dialog>
+
+<p-dialog [style]="{ 'width': '500px' }" [minY]="70" [maximizable]="true" [(visible)]="displayDialogEditingTask"
+  appendTo="body" [modal]="true" [draggable]="false" position="top" header="Modifier une tâche">
+
+  <app-new-edit-task *ngIf="selectedTask && displayDialogEditingTask" [mode]="'edit'"
+    (savedTask)="hideCreatedOrUpdatedTaskDialog($event)" [task]="selectedTask"
+    (errorSavingTask)="hideDialogErrorSavingOrUpdatingTask($event)">
+  </app-new-edit-task>
+
+
+</p-dialog>
+
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" aria-label="Main navigation">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Dashboard</a>
+    <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</nav>
+
+<main class="container">
+  <div class="p-3 my-3 text-white bg-dark rounded shadow-sm d-flex align-items-center justify-content-center">
+    <h5 class="my-1 text-center">Liste des tâches</h5>
+  </div>
+
+  <div class="my-3 p-3 bg-body rounded shadow-sm">
+    <div class="border-bottom pb-2 mb-0">
+      <div class="d-flex justify-content-between flex-column flex-md-row">
+        <div class="mb-3 mb-md-0">
+          <span class="p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+              placeholder="Recherche" />
+          </span>
+        </div>
+        <div>
+          <button type="button" pButton label="Ajouter une tâche" icon="pi pi-plus"
+            class="bg-dark border-dark text-white" (click)="openCreatingTaskDialog()"></button>
+        </div>
+      </div>
+    </div>
+    <div class=" text-body-secondary pt-3">
+      <!-- Task Table -->
+      <p-table [value]="tasks" [paginator]="true" [rows]="50" [responsive]="true" [autoLayout]="true"
+        [sortMode]="'multiple'" [scrollable]="true" scrollHeight="400px" [globalFilterFields]="['title','description']"
+        #dt>
+
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Titre</th>
+            <th>Description</th>
+            <th class="p-col-fixed" style="width: 150px;">Action</th> <!-- Edit/Delete Buttons Column -->
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-task>
+          <tr>
+            <td>{{ task.title | truncate:15}}
+            </td>
+            <td>{{ task.description | truncate:25}}
+            </td>
+            <td>
+              <div class="flex align-items-center justify-content-center gap-2">
+                <button type="button" pButton icon="pi pi-pencil" class="bg-dark border-dark text-white"
+                  (click)="openUpdatingTaskDialog(task)"></button>
+                <button type="button" pButton icon="pi pi-trash" class="ml-2 p-button-danger"
+                  (click)="deleteTask(task)"></button>
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage" *ngIf="tasks.length === 0">
+          <tr>
+            <td colspan="3" class="text-center">La liste des tâches est vide</td>
+          </tr>
+        </ng-template>
+
+      </p-table>
+    </div>
+  </div>
+</main>

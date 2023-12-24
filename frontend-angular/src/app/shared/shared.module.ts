@@ -12,10 +12,12 @@ import {InputTextModule} from 'primeng/inputtext';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {DialogModule} from "primeng/dialog";
 import { ToastModule } from 'primeng/toast';
+import {NewEditTaskComponent} from './components/new-edit-task/new-edit-task.component';
+
 
 @NgModule({
   declarations: [
-
+    NewEditTaskComponent
   ],
   imports: [
     CommonModule,
@@ -39,6 +41,9 @@ import { ToastModule } from 'primeng/toast';
 
   ],
   exports: [
+    // Export Components
+    NewEditTaskComponent,
+
     // Export Angular Module
     CommonModule,
     HttpClientModule,

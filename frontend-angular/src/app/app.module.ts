@@ -7,11 +7,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {SharedModule} from "./shared/shared.module";
 import { TruncatePipe } from './pipes/truncate/truncate.pipe';
+import { DashboardComponent} from './modules/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TruncatePipe
+    TruncatePipe,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
