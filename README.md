@@ -11,7 +11,7 @@ Project is created with:
 To install this project locally, follow these steps:
 
 - Install Node.js and npm on your computer. You can download the latest version of [Node.js](https://nodejs.org/en/download) from the official Node.js website.
-- Install Angular on your computer. You can download the latest version of [Angular] (https://angular.io/guide/setup-local) from the official Angular website.
+- Install Angular on your computer. You can download the latest version of [Angular](https://angular.io/guide/setup-local) from the official Angular website.
 - Clone the To-Do-List application's GitHub repository on your local computer.
 - Open a command prompt and navigate to the application's root directory.
 - then access the backend-api-nodejs directory with "cd  backend-api-nodejs"
